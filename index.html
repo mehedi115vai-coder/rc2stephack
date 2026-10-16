@@ -1,847 +1,834 @@
+<!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
 <!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=bbb056b7-361d-4cd5-9049-ea2a8a8cd38f
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=e1fc5fbf-ff9b-4021-9154-f13e7016e96e
      Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>𝐑𝐂)☞𝐎𝐖𝐍𝐄𝐑☞𝐑𝐀𝐉(</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&amp;family=Orbitron:wght@500;700;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>
+☞(𝐑𝐂) ☞𝐎𝐖𝐍𝐄𝐑 ☞ 𝐑𝐀𝐉</title>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-        }
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: radial-gradient(circle at 30% 20%, #0B0A1A, #020005);
-            font-family: 'Inter', sans-serif;
-        }
-        .game-frame {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 1;
-            opacity: 0.9;
-            filter: brightness(0.92) contrast(1.05);
-        }
-        .premium-card {
-            position: fixed;
-            top: 20px;
-            left: 16px;
-            z-index: 9999;
-            background: rgba(10, 6, 26, 0.85);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 18px;
-            border: 1px solid rgba(157, 80, 255, 0.6);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(157,80,255,0.25);
-            transition: width 0.2s ease, border-radius 0.2s ease;
-            cursor: grab;
-            touch-action: none;
-            width: 180px;
-            max-width: calc(100% - 32px);
-        }
-        .premium-card:active { cursor: grabbing; }
-        .gate-compact {
-            background: linear-gradient(145deg, rgba(16,8,38,0.95), rgba(6,2,20,0.95));
-            border-radius: 18px;
-            padding: 12px 10px;
-            text-align: center;
-        }
-        .gate-icon-sm {
-            font-size: 26px;
-            background: linear-gradient(135deg, #ffd700, #ff55cc, #9d50ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            filter: drop-shadow(0 0 10px rgba(157, 80, 255, 0.8));
-            animation: premiumKeyFx 3s infinite ease-in-out;
-        }
-        @keyframes premiumKeyFx {
-            0% { transform: rotate(-10deg) scale(1); filter: drop-shadow(0 0 8px rgba(157, 80, 255, 0.6)) drop-shadow(0 0 2px #ffd700); }
-            50% { transform: rotate(15deg) scale(1.15); filter: drop-shadow(0 0 22px rgba(255, 85, 204, 0.9)) drop-shadow(0 0 6px #ffd700); }
-            100% { transform: rotate(-10deg) scale(1); filter: drop-shadow(0 0 8px rgba(157, 80, 255, 0.6)) drop-shadow(0 0 2px #ffd700); }
-        }
-        .gate-title-sm {
-            font-family: 'Orbitron', monospace;
-            font-size: 10px;
-            background: linear-gradient(135deg, #fff, #c58aff, #ff66c0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            margin: 8px 0 10px;
-        }
-        .key-input-sm {
-            width: 100%;
-            background: rgba(0,0,0,0.75);
-            border: 1.5px solid rgba(157, 80, 255, 0.7);
-            border-radius: 10px;
-            padding: 6px 8px;
-            color: #fff;
-            font-size: 10px;
-            text-align: center;
-            outline: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .key-input-sm:focus { border-color: #ff55cc; box-shadow: 0 0 8px rgba(255, 85, 204, 0.5); }
-        .login-btn-sm {
-            background: linear-gradient(95deg, #9d50ff, #ff55cc);
-            width: 100%;
-            border: none;
-            padding: 6px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-family: 'Orbitron', monospace;
-            color: white;
-            font-size: 9px;
-            margin-top: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(157, 80, 255, 0.3);
-            transition: all 0.2s;
-        }
-        .login-btn-sm:active { transform: scale(0.96); }
-        .exp-compact { padding: 6px 8px 8px; }
-        .card-header-compact {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .brand-compact {
-            font-family: 'Orbitron', monospace;
-            font-size: 8px;
-            font-weight: 900;
-            background: linear-gradient(130deg, #fff, #cc9eff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .action-group { display: flex; gap: 4px; }
-        .icon-btn-sm {
-            background: rgba(157, 80, 255, 0.15);
-            border: 1px solid rgba(157, 80, 255, 0.4);
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 8px;
-            color: #e2d5ff;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        .icon-btn-sm:hover { background: rgba(157, 80, 255, 0.3); color: #fff; }
-        #exitPermBtn { background: rgba(255, 64, 108, 0.15); border: 1px solid rgba(255, 64, 108, 0.4); color: #ff99b4; }
-        #exitPermBtn:hover { background: rgba(255, 64, 108, 0.35); color: #fff; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif; background: #000; }
+        iframe { width: 100%; height: calc(100% - 60px); border: none; }
         
-        .timer-row {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 4px 6px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            font-size: 8px;
-            margin-bottom: 6px;
-            overflow: hidden;
+        /* Drag container */
+        #predictionBox {
+            position: fixed; bottom: 90px; right: 30px; z-index: 99999; cursor: grab; 
+            user-select: none; touch-action: none; 
         }
-        .timer-row-top { 
+        
+        /* Zoom container inside drag container */
+        #boxWrap { 
+            position: relative; display: inline-block; 
+            transform: scale(var(--panel-zoom, 1)); transform-origin: top left; transition: transform 0.2s ease;
+        }
+        
+        #boxInner {
+            position: relative; z-index: 1; border-radius: 20px; border: 2.5px solid #1dc06d;
+            box-shadow: 0 0 18px #1dc06d55, 0 0 40px #1dc06d22, inset 0 0 15px #00000088;
+            padding: 14px 12px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+            width: 190px; min-height: 280px; overflow: hidden;
+            transition: border-color 1.2s ease, box-shadow 1.2s ease, height 0.3s ease;
+            background: rgba(10, 17, 13, 0.5); 
+        }
+        
+        /* Image Background */
+        #bgImg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+            z-index: 0; display: block; border-radius: 18px; filter: brightness(0.70);
+            pointer-events: none;
+        }
+        
+        .overlay-content { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Header */
+        #panelHeader { width: 100%; position: relative; margin-bottom: 5px; padding-right: 15px; box-sizing: border-box; display: flex; align-items: flex-start; flex-direction: column; gap: 4px; }
+        #boxTitle { font-size: 10px; font-weight: bold; color: #ffd700; letter-spacing: 0.5px; margin: 0; line-height: 1.2; text-shadow: 0 0 5px #000, 0 0 8px rgba(255, 215, 0, 0.8); transition: color 1.2s ease, text-shadow 1.2s ease; }
+        #headerMode { background: rgba(0, 255, 191, 0.2); border: 1px solid #00ffbf; color: #00ffbf; padding: 1px 6px; border-radius: 4px; font-size: 8px; font-weight: bold; backdrop-filter: blur(2px); display: inline-block; transition: all 1.2s ease; }
+        
+        /* Menu Button */
+        #menuBtn { position: absolute; right: -5px; top: 0px; background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 0 5px; line-height: 1; text-shadow: 0 0 5px #000; transition: all 0.2s ease; }
+
+        /* Dropdown */
+        #dropdownMenu { position: absolute; top: 25px; right: 10px; width: 130px; background: rgba(10, 17, 13, 0.95); border: 1.5px solid #1dc06d; border-radius: 10px; padding: 8px; z-index: 100002; display: none; flex-direction: column; gap: 6px; box-shadow: 0 0 15px rgba(29, 192, 109, 0.5); backdrop-filter: blur(5px); transition: border-color 1.2s ease, box-shadow 1.2s ease; }
+        .zoom-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; margin-bottom: 2px; }
+        .zoom-btn { background: #122116; border: 1px solid #1dc06d; color: #1dc06d; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-size: 11px; font-weight: bold; transition: all 0.3s ease; }
+        .zoom-label { font-size: 10px; color: #aaa; }
+        .menu-item { width: 100%; padding: 5px 0; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 6px; background: rgba(10, 46, 18, 0.8); color: #1dc06d; border: 1px solid #1dc06d55; text-align: center; transition: all 0.3s ease; }
+        .menu-item.active { background: #1dc06d; color: #000; border-color: #1dc06d; }
+        .menu-item.minimize-btn { background: rgba(255, 59, 59, 0.8); color: #fff; border-color: rgba(255, 59, 59, 0.5); }
+
+        .divider { width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent, #1dc06d, transparent); margin: 6px 0; transition: background 1.2s ease; }
+        
+        /* Login Form */
+        #loginForm { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; margin-top: 15px; }
+        #loginForm input { width: 90%; padding: 8px 10px; border-radius: 12px; border: 1.5px solid #1dc06d; background: rgba(0, 0, 0, 0.6); color: #fff; text-align: center; font-size: 12px; outline: none; box-sizing: border-box; backdrop-filter: blur(4px); transition: border-color 1.2s ease, box-shadow 1.2s ease; }
+        #loginBtn { width: 90%; padding: 8px 10px; border-radius: 12px; border: none; background: linear-gradient(135deg, #1dc06d, #0a7a35); color: #000; font-weight: bold; cursor: pointer; font-size: 13px; box-sizing: border-box; box-shadow: 0 0 10px #1dc06d88; letter-spacing: 1px; transition: all 0.3s ease; }
+        .tg-btn { width: 90%; padding: 8px 10px; border-radius: 12px; border: 1.5px solid #229ED9; background: rgba(13, 95, 138, 0.8); color: #fff; font-weight: bold; cursor: pointer; font-size: 12px; text-decoration: none; display: block; text-align: center; box-sizing: border-box; box-shadow: 0 0 8px rgba(34, 158, 217, 0.5); backdrop-filter: blur(4px); transition: all 0.3s ease; }
+        
+        /* Prediction UI */
+        #predictionUI { display: none; width: 100%; flex-direction: column; align-items: center; gap: 5px; margin-top: 2px; }
+        #periodCapsule { border: 1px solid rgba(0, 255, 191, 0.3); background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 2px 10px; font-size: 9px; color: #00ffbf; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 8px; text-shadow: 0 0 3px #000; transition: all 1.2s ease; }
+        
+        #predData { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 6px; }
+        #bsText { font-size: 32px; font-weight: 900; letter-spacing: 2px; text-align: center; margin: 0; line-height: 1.1; transition: color 1.2s ease, text-shadow 1.2s ease; }
+        .big { color: #09ff77; text-shadow: 0 0 10px #09ff77, 0 0 20px #09ff7799, 0 0 5px #000; }
+        .small { color: #ff3b3b; text-shadow: 0 0 10px #ff3b3b, 0 0 20px #ff3b3b99, 0 0 5px #000; }
+        
+        #timerEl { font-size: 24px; font-weight: bold; color: #fff; padding: 0; letter-spacing: 1px; text-shadow: 0 0 8px rgba(255,255,255,0.5), 0 0 3px #000; font-family: monospace; margin-bottom: 2px; transition: color 1.2s ease; }
+        #numberCircle { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #00ffbf; box-shadow: 0 0 12px #00ffbf88, inset 0 0 8px #00ffbf44; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: #fff; text-shadow: 0 0 5px #000, 0 0 8px #00ffbf; background: rgba(0,0,0,0.5); transition: all 1.2s ease; }
+        
+        /* Toast */
+        #toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); padding: 10px 20px; border-radius: 8px; font-weight: bold; z-index: 1000000; display: none; font-size: 14px; text-align: center; }
+        #toast.success { background: #00ff7f; color: #000; } #toast.error { background: #ff3b3b; color: #fff; } #toast.info { background: #00cfff; color: #000; }
+
+        /* Chart Modal */
+        #chartModal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 1000001; display: none; justify-content: center; align-items: center; }
+        #chartInner { background: #0a110d; border: 2px solid #1dc06d; border-radius: 16px; width: 90%; max-width: 420px; padding: 20px; color: #fff; display: flex; flex-direction: column; max-height: 85vh; transition: border-color 1.2s ease, box-shadow 1.2s ease; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+        .stat-box { background: #122116; border: 1px solid #1dc06d55; padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; color: #aaa; transition: border-color 1.2s ease; }
+        .stat-box span { display: block; font-size: 18px; font-weight: bold; margin-top: 4px; color: #fff; }
+        .stat-box.win span { color: #09ff77; } .stat-box.loss span { color: #ff3b3b; }
+        .table-wrap { overflow-y: auto; flex-grow: 1; border: 1px solid #1dc06d33; border-radius: 8px; transition: border-color 1.2s ease; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; }
+        th { background: #122116; padding: 10px; color: #1dc06d; position: sticky; top: 0; transition: color 1.2s ease; }
+        td { padding: 10px 5px; border-bottom: 1px solid #1dc06d22; color: #ccc; }
+        .td-win { color: #09ff77 !important; font-weight: bold; } .td-loss { color: #ff3b3b !important; font-weight: bold; }
+        #closeChartBtn { margin-top: 15px; padding: 10px; width: 100%; border-radius: 8px; border: none; background: #ff3b3b; color: white; font-weight: bold; cursor: pointer; transition: background 1.2s ease; }
+
+        /* Step Manager */
+        #stepModal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); z-index: 1000002; display: none; flex-direction: column; justify-content: flex-end;}
+        #stepInner { background: #f4f5f7; border-radius: 20px 20px 0 0; padding: 25px 20px 30px; text-align: center; color: #333; animation: slideUp 0.3s ease-out;}
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .step-handle { width: 40px; height: 4px; background: #bbb; border-radius: 2px; margin: 0 auto 20px; }
+        .step-input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 14px; box-sizing: border-box; }
+        #generatePlanBtn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: #111; color: #00e6e6; font-weight: 900; font-size: 14px; cursor: pointer; margin-bottom: 10px; transition: background 1.2s ease, color 1.2s ease; }
+        #stepResult { font-size: 11px; color: #777; margin-top: 10px; min-height: 20px; text-align: center; }
+        .step-list { text-align: left; background: #fff; padding: 12px; border-radius: 10px; border: 1px solid #eee; margin-top: 15px; max-height: 220px; overflow-y: auto; color: #222; font-weight: bold; font-size: 13px; }
+
+        /* Bottom Nav (FIXED) */
+        #bottomNavBar { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 60px; 
+            background: #010804; 
+            border-top: 1.5px solid #1dc06d; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            color: #b5a8ff;
-            width: 100%;
-            white-space: nowrap;
+            z-index: 99999; 
+            padding: 0 15px; 
+            box-sizing: border-box; 
+            transition: border-color 1.2s ease;
         }
-        #p_id {
-            font-family: 'Orbitron', monospace; 
-            font-weight: 700; 
-            color: #fff;
-            font-size: 7.5px; 
-            letter-spacing: -0.2px;
-            text-align: right;
-            max-width: 70%;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        #bottomNavBar button { 
+            width: 48%; 
+            height: 42px; 
+            background: #040d08; 
+            border: 1px solid #1dc06d; 
+            border-radius: 8px; 
+            color: #1dc06d; 
+            font-weight: bold; 
+            font-size: 12px; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
         }
-        .timer-countdown-lbl {
-            font-size: 7.5px;
-            color: #ff66c0;
-            font-weight: 800;
-            letter-spacing: 0.3px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1px;
-            border-top: 1px dashed rgba(255,255,255,0.1);
-            padding-top: 2px;
-        }
-        .prediction-core-compact {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: radial-gradient(circle at 20% 50%, rgba(157,80,255,0.2), rgba(0,0,0,0.4));
-            border-radius: 12px;
-            padding: 5px 8px;
-            margin-bottom: 6px;
-            border: 1px solid rgba(157, 80, 255, 0.3);
-        }
-        .numbers-container { display: flex; gap: 4px; }
-        .number-circle-sm {
-            width: 32px;
-            height: 32px;
-            background: rgba(0,0,0,0.6);
-            border: 2px solid #9d50ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', monospace;
-            font-size: 16px;
-            font-weight: 900;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 8px rgba(157,80,255,0.4);
-        }
-        .result-badge-sm { text-align: right; }
-        .big-small-sm { font-size: 13px; font-weight: 900; letter-spacing: 0.5px; color: #fff !important; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-        .color-chip-sm { font-size: 7.5px; font-weight: 900; padding: 1px 6px; border-radius: 4px; background: #00ffaa; color: #000; display: inline-block; margin-top: 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .info-mini-grid { display: flex; gap: 4px; margin-bottom: 6px; }
-        .info-mini-card { flex: 1; background: rgba(20, 12, 44, 0.7); border-radius: 10px; padding: 4px; border: 1px solid rgba(255,255,255,0.05); }
-        .hist-scroll-compact { max-height: 44px; overflow-y: auto; font-size: 7px; display: flex; flex-direction: column-reverse; gap: 2px; }
-        .hist-item { background: rgba(0,0,0,0.4); padding: 1px 3px; border-radius: 4px; display: flex; justify-content: space-between; font-family: monospace; }
-        .hist-item span { color: #ddd; }
-        .acc-val-compact { font-size: 15px; font-weight: 900; font-family: 'Orbitron', monospace; line-height: 1.1; color: #fff !important; }
-        .conf-dots { display: flex; gap: 2px; margin-top: 3px; }
-        .dot-conf { height: 2.5px; flex: 1; background: #231b3a; border-radius: 2px; }
-        .dot-conf.active { background: linear-gradient(90deg, #9d50ff, #ff66c0); }
-        .trend-compact { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.4); border-radius: 10px; padding: 4px 6px; font-size: 7.5px; font-weight: 600; margin-bottom: 6px; border: 1px solid rgba(255,255,255,0.03); color: #aaa; }
-        .trend-compact span { display: flex; justify-content: space-between; }
-        .trend-compact strong { color: #fff !important; }
-        .mode-selector-container { display: flex; gap: 6px; margin-bottom: 8px; }
-        .mode-btn { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(157, 80, 255, 0.3); color: #b5a8ff; padding: 5px; border-radius: 8px; font-size: 8px; font-weight: 800; font-family: 'Orbitron', monospace; cursor: pointer; transition: all 0.2s ease; text-align: center; }
-        .mode-btn.active { background: linear-gradient(95deg, #9d50ff, #ff55cc); border-color: transparent; color: #fff; box-shadow: 0 0 10px rgba(157, 80, 255, 0.5); }
-        .telegram-btn-sm { display: block; background: linear-gradient(95deg, #1da1f2, #7b2cbf); text-align: center; padding: 5px; border-radius: 10px; font-size: 8.5px; font-weight: 800; text-decoration: none; color: white; box-shadow: 0 3px 8px rgba(29, 161, 242, 0.2); transition: 0.2s; }
-        .telegram-btn-sm:active { transform: scale(0.97); }
-        .collapsed-wrapper { padding: 4px; display: flex; align-items: center; justify-content: center; }
-        .fold-circle { width: 42px; height: 42px; background: radial-gradient(circle at 30% 30%, #291452, #0a041c); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ff55cc; box-shadow: 0 0 12px rgba(255, 85, 204, 0.6), inset 0 0 6px rgba(157,80,255,0.5); cursor: pointer; animation: floatGlow 2.5s infinite ease-in-out; transition: transform 0.1s; }
-        @keyframes floatGlow {
-            0% { transform: translateY(0px); box-shadow: 0 0 10px rgba(255, 85, 204, 0.5); }
-            50% { transform: translateY(-3px); box-shadow: 0 0 16px rgba(157, 80, 255, 0.8); }
-            100% { transform: translateY(0px); box-shadow: 0 0 10px rgba(255, 85, 204, 0.5); }
-        }
-        .fold-circle img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #140c24; pointer-events: none; }
-        .fold-circle:active { transform: scale(0.9); }
-        ::-webkit-scrollbar { width: 2px; }
-        ::-webkit-scrollbar-track { background: #150e2a; }
-        ::-webkit-scrollbar-thumb { background: #9d50ff; border-radius: 10px; }
 
-        /* PREMIUM DIGITAL POPUP SYSTEM STYLES */
-        .digital-popup-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 100000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(3, 2, 10, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* MASSIVE ROSE PETAL EFFECT */
+        .rose-petal {
+            position: fixed; z-index: 1000005; top: -20px; pointer-events: none;
+            font-size: 16px; animation: fall linear forwards;
         }
-        .digital-popup-overlay.show {
-            opacity: 1;
-            pointer-events: auto;
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(720deg); }
         }
-        .digital-popup-box {
-            background: linear-gradient(135deg, rgba(14, 9, 34, 0.95), rgba(6, 3, 16, 0.98));
-            border-radius: 24px;
-            padding: 30px 40px;
-            text-align: center;
-            transform: scale(0.7) translateY(30px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 280px;
-            position: relative;
-            overflow: hidden;
-        }
-        .digital-popup-overlay.show .digital-popup-box {
-            transform: scale(1) translateY(0);
-        }
-        .popup-glow-bg {
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .popup-mode-badge {
-            font-family: 'Orbitron', monospace;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #b5a8ff;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .popup-status-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 42px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            margin-bottom: 6px;
-            position: relative;
-            z-index: 1;
-        }
-        .popup-status-title.win-style {
-            background: linear-gradient(135deg, #00ffaa, #00bfff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 255, 170, 0.6));
-        }
-        .popup-status-title.loss-style {
-            background: linear-gradient(135deg, #ff4d6d, #ff003c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 0 15px rgba(255, 77, 109, 0.6));
-        }
-        .popup-decor-line {
-            height: 2px;
-            width: 60px;
-            margin: 12px auto;
-            position: relative;
-            z-index: 1;
-        }
-        .win-line { background: linear-gradient(90deg, transparent, #00ffaa, transparent); }
-        .loss-line { background: linear-gradient(90deg, transparent, #ff4d6d, transparent); }
-        .popup-footer-text {
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #boxInner { width: 160px; min-height: 240px; }
         }
     </style>
 </head>
 <body>
 
-<iframe class="game-frame" src="https://hgnice1.com/#/register?invitationCode=547411733631"></iframe>
+<iframe src="https://hgnice.bet/#/register?invitationCode=965192217976এই"></iframe>
 
-<div class="premium-card" id="moveCard" style="position: fixed; left: 16px; top: 20px;">
-    <div id="gateContainer" style="display: block;">
-        <div class="gate-compact">
-            <div class="gate-icon-sm"><i class="fas fa-key"></i></div>
-            <div class="gate-title-sm">𝐑𝐂)☞𝐎𝐖𝐍𝐄𝐑☞𝐑𝐀𝐉(</div>
-            <input type="password" id="accessPin" class="key-input-sm" placeholder="✦ ACCESS CODE ✦">
-            <button id="unlockBtnMain" class="login-btn-sm"><i class="fas fa-unlock"></i> UNLOCK</button>
+<!-- Hidden Audio Element for Winning Song -->
+<audio id="winAudio" src="https://files.catbox.moe/maq0bs.mp4" preload="auto"></audio>
+
+<div id="predictionBox">
+  <div id="boxWrap">
+    <div id="boxInner" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.333) 0px 0px 18px, rgba(0, 207, 255, 0.133) 0px 0px 40px, rgba(0, 0, 0, 0.533) 0px 0px 15px inset;">
+      <!-- Background Image -->
+      <img id="bgImg" src="https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/amc6arcbhkkdwnuvwzxl" alt="Background">
+      
+      <div class="overlay-content" id="panelHeader">
+        <span id="boxTitle" style="color: rgb(0, 207, 255); text-shadow: rgb(0, 0, 0) 0px 0px 5px, rgba(0, 207, 255, 0.533) 0px 0px 8px;">☢☞(𝐑𝐂) ☞𝐎𝐖𝐍𝐄𝐑 ☞ 𝐑𝐀𝐉✔</span>
+        <span id="headerMode" style="border-color: rgb(0, 207, 255); color: rgb(0, 207, 255); background: rgba(0, 207, 255, 0.133);">🥵 HACK OWNER RAJ ✅</span>
+        <button id="menuBtn" onclick="toggleMenu(event)">⋮</button>
+      </div>
+      
+      <div id="dropdownMenu" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.533) 0px 0px 15px;">
+         <div class="zoom-row">
+            <button class="zoom-btn" onclick="zoomOut()" style="border-color: rgb(0, 207, 255); color: rgb(0, 207, 255);">🔍-</button>
+            <span class="zoom-label">ZOOM</span>
+            <button class="zoom-btn" onclick="zoomIn()" style="border-color: rgb(0, 207, 255); color: rgb(0, 207, 255);">🔍+</button>
+         </div>
+         <button class="menu-item active" id="m30s" onclick="setMode('30S')" style="border-color: rgb(0, 207, 255); color: rgb(0, 0, 0); background: rgb(0, 207, 255);">30 SEC</button>
+         <button class="menu-item" id="m1m" onclick="setMode('1M')" style="border-color: rgba(0, 207, 255, 0.333); color: rgb(0, 207, 255); background: rgba(10, 46, 18, 0.8);">1 MIN</button>
+         <button class="menu-item minimize-btn" id="minimizeBtn" onclick="toggleMinimize()">MINIMIZE</button>
+      </div>
+      
+      <div class="divider overlay-content" id="topDivider" style="background: linear-gradient(90deg, transparent, rgb(0, 207, 255), transparent);"></div>
+      
+      <div class="overlay-content" id="loginForm">
+        <input type="password" id="passwordInput" placeholder="Enter Access Key" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.267) 0px 0px 15px;">
+        <button id="loginBtn" onclick="handleLogin()" style="background: linear-gradient(135deg, rgb(0, 207, 255), rgb(10, 106, 53)); box-shadow: rgba(0, 207, 255, 0.533) 0px 0px 10px;">🔑 Login</button>
+        <a href="https://t.me/+ATZxFWV_oVJkZGE9" target="_blank" class="tg-btn" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.4) 0px 0px 8px; background: rgba(13, 95, 138, 0.8);">✈ Join Telegram</a>
+      </div>
+      
+      <div class="overlay-content" id="predictionUI">
+        <div id="periodCapsule" style="border-color: rgba(0, 207, 255, 0.267); color: rgb(0, 207, 255); text-shadow: rgb(0, 0, 0) 0px 0px 3px, rgba(0, 207, 255, 0.267) 0px 0px 8px;">ID: --------</div>
+        <div id="predData">
+            <div id="bsText" class="big">BIG</div>
+            <div id="timerEl" style="color: rgb(0, 207, 255); text-shadow: rgba(0, 207, 255, 0.4) 0px 0px 8px, rgb(0, 0, 0) 0px 0px 3px;">00:30</div>
+            <div id="numberCircle" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.533) 0px 0px 12px, rgba(0, 207, 255, 0.267) 0px 0px 8px inset; text-shadow: rgb(0, 0, 0) 0px 0px 5px, rgb(0, 207, 255) 0px 0px 8px;">7</div>
         </div>
+      </div>
+      
     </div>
+  </div>
+</div>
 
-    <div id="expandedView" style="display: none;">
-        <div class="exp-compact">
-            <div class="card-header-compact">
-                <span class="brand-compact"><i class="fas fa-microchip"></i> 𝐑𝐂)☞𝐎𝐖𝐍𝐄𝐑☞𝐑𝐀𝐉(</span>
-                <div class="action-group">
-                    <button id="foldHideBtn" class="icon-btn-sm" title="Fold to icon"><i class="fas fa-minus"></i></button>
-                    <button id="exitPermBtn" class="icon-btn-sm" title="Remove card"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            
-            <div class="timer-row">
-                <div class="timer-row-top">
-                    <span style="font-size:7.5px; font-weight:800;">⚡ PERIOD:</span>
-                    <span id="p_id">------</span>
-                </div>
-                <div class="timer-countdown-lbl">
-                    <span>NEXT SIGNAL IN:</span>
-                    <span id="timer_display" style="font-family:'Orbitron'; font-weight:900; font-size:9px; color:#00ffaa;">00:30</span>
-                </div>
-            </div>
-            
-            <div class="prediction-core-compact">
-                <div class="numbers-container">
-                    <div class="number-circle-sm" id="numCircle1">?</div>
-                    <div class="number-circle-sm" id="numCircle2">?</div>
-                </div>
-                <div class="result-badge-sm">
-                    <div class="big-small-sm" id="predText">---</div>
-                    <span class="color-chip-sm" id="colorChip">---</span>
-                </div>
-            </div>
-            
-            <div class="info-mini-grid">
-                <div class="info-mini-card">
-                    <div style="font-size: 5.5px; opacity:0.6; color:#fff; margin-bottom:2px;">📜 HISTORY</div>
-                    <div class="hist-scroll-compact" id="historyBox"></div>
-                </div>
-                <div class="info-mini-card">
-                    <div style="font-size: 5.5px; opacity:0.6; color:#fff; margin-bottom:2px;">🎯 ACCURACY</div>
-                    <div class="acc-val-compact" id="accValue">--%</div>
-                    <div class="conf-dots" id="confidenceDots">
-                        <div class="dot-conf"></div><div class="dot-conf"></div>
-                        <div class="dot-conf"></div><div class="dot-conf"></div>
-                        <div class="dot-conf"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="trend-compact">
-                <span>TREND: <strong id="trendSpan">---</strong></span>
-                <span>SUGGEST: <strong id="suggestSpan">---</strong></span>
-                <span>RISK: <strong style="color:#00ffaa !important;">LOW</strong></span>
-            </div>
+<div id="bottomNavBar" style="border-top-color: rgb(0, 207, 255);">
+    <button onclick="openChart()" style="border-color: rgb(0, 207, 255); color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.2) 0px 0px 10px;">📊 CHART</button>
+    <button onclick="openStepModal()" style="border-color: rgb(0, 207, 255); color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.2) 0px 0px 10px;">🧮 STEP MANAGER</button>
+</div>
 
-            <div class="mode-selector-container">
-                <button class="mode-btn active" id="btn30s" onclick="switchTimeMode(30)">30 SECONDS</button>
-                <button class="mode-btn" id="btn1m" onclick="switchTimeMode(60)">1 MINUTE</button>
-            </div>
+<div id="toast"></div>
 
-            <a href="https://t.me/SSB_TEAM_SIGNAL" class="telegram-btn-sm" target="_blank"><i class="fab fa-telegram"></i> JOIN VIP SIGNALS</a>
+<!-- Chart Modal -->
+<div id="chartModal" onclick="closeChart(event)">
+    <div id="chartInner" onclick="event.stopPropagation()" style="border-color: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.267) 0px 0px 30px;">
+        <h3 style="text-align: center; color: rgb(0, 207, 255); margin: 0px 0px 15px;">📊 Server History</h3>
+        <div class="stats-grid">
+            <div class="stat-box" style="border-color: rgba(0, 207, 255, 0.333);">TRADES<span id="stTotal">0</span></div>
+            <div class="stat-box win" style="border-color: rgba(0, 207, 255, 0.333);">WIN<span id="stWin">0</span></div>
+            <div class="stat-box loss" style="border-color: rgba(0, 207, 255, 0.333);">LOSS<span id="stLoss">0</span></div>
         </div>
-    </div>
-
-    <div id="collapsedView" style="display: none;">
-        <div class="collapsed-wrapper">
-            <div class="fold-circle" id="expandFromIconCircle" title="Drag to Move / Click to Expand">
-                <img src="https://iili.io/CRsDsg1.md.jpg" alt="expand">
-            </div>
+        <div class="table-wrap" style="border-color: rgba(0, 207, 255, 0.2);">
+            <table id="histTable">
+                <thead><tr><th style="color: rgb(0, 207, 255);">Period</th><th style="color: rgb(0, 207, 255);">Pred</th><th style="color: rgb(0, 207, 255);">Result</th><th style="color: rgb(0, 207, 255);">Status</th></tr></thead>
+                <tbody id="histBody"></tbody>
+            </table>
         </div>
+        <button id="closeChartBtn" onclick="closeChart(event, true)" style="background: rgb(0, 207, 255); box-shadow: rgba(0, 207, 255, 0.4) 0px 0px 15px;">CLOSE CHART</button>
     </div>
 </div>
 
-<div class="digital-popup-overlay" id="premiumPopupOverlay">
-    <div class="digital-popup-box" id="popupBox">
-        <div class="popup-glow-bg" id="popupGlow"></div>
-        <div class="popup-mode-badge" id="popupModeText">30 SECONDS MODE</div>
-        <div class="popup-status-title" id="popupStatusTitle">WIN</div>
-        <div class="popup-decor-line" id="popupLine"></div>
-        <div class="popup-footer-text">𝐑𝐂)☞𝐎𝐖𝐍𝐄𝐑☞𝐑𝐀𝐉(</div>
+<!-- Step Manager -->
+<div id="stepModal" onclick="closeStepModal(event)">
+    <div id="stepInner" onclick="event.stopPropagation()">
+        <div class="step-handle"></div>
+        <h3 style="margin: 0 0 20px; font-size: 16px; color: #111; font-weight: 900;">🧮 STEP MANAGER</h3>
+        <input type="number" id="capitalInput" class="step-input" placeholder="Enter Total Capital (e.g. 500)">
+        <input type="number" id="stepsInput" class="step-input" placeholder="Number of Steps (e.g. 5)">
+        <button id="generatePlanBtn" onclick="generateSteps()" style="background: linear-gradient(135deg, rgb(0, 207, 255), rgb(10, 106, 53)); color: rgb(0, 0, 0); box-shadow: rgba(0, 207, 255, 0.4) 0px 0px 15px;">GENERATE PLAN</button>
+        <div id="stepResult">The calculated steps will be displayed here securely.</div>
     </div>
 </div>
 
 <script>
-    (function(){
-        // --- CONFIG ---
-        const VALID_ACCESS_CODE = "(𝐑𝐂)"; // Hardcoded password
+// ==========================================
+// GLOBALS & STATE
+// ==========================================
+let savedHistory = [];
+let rawApiHistoryList = [];
+let stats = { total: 0, win: 0, loss: 0 };
+let currentMode = "30S";
+let currentZoom = 1.0;
+let isMinimized = false;
+let curPeriod = ""; 
+let currentPredSide = null; 
+let colorInterval = null;
 
-        // --- STATE ---
-        let aiInterval = null;
-        let cardActive = true;
-        let currentMode = "gate"; 
-        let selectedTimeMode = 30; 
-        let cachedSignals = {
-            30: { lastPeriodId: "", history: [], lossCounter: 0 },
-            60: { lastPeriodId: "", history: [], lossCounter: 0 }
-        };
+// ==========================================
+// COLOR ANIMATION SYSTEM
+// ==========================================
+const colorPalette = [
+    '#1dc06d', // Green
+    '#00cfff', // Cyan
+    '#ff4fcf', // Pink
+    '#ffcc00', // Yellow
+    '#ff4444', // Red
+    '#44ffcc', // Mint
+    '#aa44ff', // Purple
+    '#ff8844', // Orange
+    '#ff6b9d', // Rose
+    '#00ff87', // Spring green
+    '#ffd700', // Gold
+    '#00bfff'  // Deep sky blue
+];
 
-        const API_30S = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json';
-        const API_1M = 'https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json'; 
+let colorIndex = 0;
+
+function applyColor(color) {
+    // Box border & shadow
+    document.getElementById('boxInner').style.borderColor = color;
+    document.getElementById('boxInner').style.boxShadow = `0 0 18px ${color}55, 0 0 40px ${color}22, inset 0 0 15px #00000088`;
+    
+    // Box Title
+    document.getElementById('boxTitle').style.color = color;
+    document.getElementById('boxTitle').style.textShadow = `0 0 5px #000, 0 0 8px ${color}88`;
+    
+    // Header Mode
+    document.getElementById('headerMode').style.borderColor = color;
+    document.getElementById('headerMode').style.color = color;
+    document.getElementById('headerMode').style.background = `${color}22`;
+    
+    // Dropdown Menu
+    const dropdown = document.getElementById('dropdownMenu');
+    dropdown.style.borderColor = color;
+    dropdown.style.boxShadow = `0 0 15px ${color}88`;
+    
+    // Zoom buttons
+    document.querySelectorAll('.zoom-btn').forEach(btn => {
+        btn.style.borderColor = color;
+        btn.style.color = color;
+    });
+    
+    // Menu items (except minimize)
+    document.querySelectorAll('.menu-item:not(.minimize-btn)').forEach(item => {
+        item.style.borderColor = `${color}55`;
+        item.style.color = color;
+        if (item.classList.contains('active')) {
+            item.style.background = color;
+            item.style.color = '#000';
+            item.style.borderColor = color;
+        } else {
+            item.style.background = 'rgba(10, 46, 18, 0.8)';
+        }
+    });
+    
+    // Divider
+    document.getElementById('topDivider').style.background = `linear-gradient(90deg, transparent, ${color}, transparent)`;
+    
+    // Login Form
+    document.querySelector('#loginForm input').style.borderColor = color;
+    document.querySelector('#loginForm input').style.boxShadow = `0 0 15px ${color}44`;
+    document.getElementById('loginBtn').style.background = `linear-gradient(135deg, ${color}, #0a6a35)`;
+    document.getElementById('loginBtn').style.boxShadow = `0 0 10px ${color}88`;
+    
+    // Prediction UI elements
+    document.getElementById('periodCapsule').style.borderColor = `${color}44`;
+    document.getElementById('periodCapsule').style.color = color;
+    document.getElementById('periodCapsule').style.textShadow = `0 0 3px #000, 0 0 8px ${color}44`;
+    
+    // Timer
+    document.getElementById('timerEl').style.color = color;
+    document.getElementById('timerEl').style.textShadow = `0 0 8px ${color}66, 0 0 3px #000`;
+    
+    // Number Circle
+    const circle = document.getElementById('numberCircle');
+    circle.style.borderColor = color;
+    circle.style.boxShadow = `0 0 12px ${color}88, inset 0 0 8px ${color}44`;
+    circle.style.textShadow = `0 0 5px #000, 0 0 8px ${color}`;
+    
+    // Bottom Nav
+    document.getElementById('bottomNavBar').style.borderTopColor = color;
+    document.querySelectorAll('#bottomNavBar button').forEach(btn => {
+        btn.style.borderColor = color;
+        btn.style.color = color;
+        btn.style.boxShadow = `0 0 10px ${color}33`;
+    });
+    
+    // Chart Modal
+    document.getElementById('chartInner').style.borderColor = color;
+    document.getElementById('chartInner').style.boxShadow = `0 0 30px ${color}44`;
+    document.querySelector('#chartInner h3').style.color = color;
+    document.querySelectorAll('.stat-box').forEach(box => {
+        box.style.borderColor = `${color}55`;
+    });
+    document.querySelector('.table-wrap').style.borderColor = `${color}33`;
+    document.querySelectorAll('#histTable th').forEach(th => {
+        th.style.color = color;
+    });
+    document.getElementById('closeChartBtn').style.background = color;
+    document.getElementById('closeChartBtn').style.boxShadow = `0 0 15px ${color}66`;
+    
+    // Step Manager
+    document.getElementById('generatePlanBtn').style.background = `linear-gradient(135deg, ${color}, #0a6a35)`;
+    document.getElementById('generatePlanBtn').style.color = '#000';
+    document.getElementById('generatePlanBtn').style.boxShadow = `0 0 15px ${color}66`;
+    
+    // Telegram button
+    const tgBtn = document.querySelector('.tg-btn');
+    if (tgBtn) {
+        tgBtn.style.borderColor = color;
+        tgBtn.style.boxShadow = `0 0 8px ${color}66`;
+        tgBtn.style.background = `rgba(13, 95, 138, 0.8)`;
+    }
+}
+
+function animateColors() {
+    if (colorInterval) clearInterval(colorInterval);
+    
+    // Apply first color immediately
+    applyColor(colorPalette[0]);
+    colorIndex = 1;
+    
+    // Then change every 1.5 seconds
+    colorInterval = setInterval(() => {
+        const color = colorPalette[colorIndex % colorPalette.length];
+        applyColor(color);
+        colorIndex++;
+    }, 1500);
+}
+
+// ==========================================
+// NUMBER COLORS SETUP
+// ==========================================
+const NUMBER_COLORS = { 
+    0: { bg: 'linear-gradient(135deg, #9c27b0, #e91e63)', text: '#ffffff' }, 
+    5: { bg: 'linear-gradient(135deg, #4caf50, #9c27b0)', text: '#ffffff' }, 
+    1: { bg: '#ff4d6d', text: '#ffffff' }, 
+    3: { bg: '#ff4d6d', text: '#ffffff' }, 
+    7: { bg: '#ff4d6d', text: '#ffffff' }, 
+    9: { bg: '#ff4d6d', text: '#ffffff' }, 
+    2: { bg: '#00f5a0', text: '#000000' }, 
+    4: { bg: '#00f5a0', text: '#000000' }, 
+    6: { bg: '#00f5a0', text: '#000000' }, 
+    8: { bg: '#00f5a0', text: '#000000' } 
+};
+
+// ==========================================
+// VOICE SYSTEM
+// ==========================================
+function unlockVoiceEngine() {
+    if ('speechSynthesis' in window) {
+        let unlockMsg = new SpeechSynthesisUtterance("");
+        unlockMsg.volume = 0; 
+        window.speechSynthesis.speak(unlockMsg);
+    }
+}
+
+function playVoice(text) {
+    try {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel(); 
         
-        const gateDiv = document.getElementById('gateContainer');
-        const expandedDiv = document.getElementById('expandedView');
-        const collapsedDiv = document.getElementById('collapsedView');
-        const cardRoot = document.getElementById('moveCard');
+        let msg = new SpeechSynthesisUtterance(text);
+        msg.volume = 1; 
+        msg.rate = 1.0; 
+        msg.pitch = 1.2;
         
-        // --- PREMIUM POPUP ---
-        function triggerPremiumPopup(mode, isWin) {
-            const overlay = document.getElementById('premiumPopupOverlay');
-            const modeText = document.getElementById('popupModeText');
-            const statusTitle = document.getElementById('popupStatusTitle');
-            const decorLine = document.getElementById('popupLine');
-            const glowBg = document.getElementById('popupGlow');
-            const box = document.getElementById('popupBox');
-
-            modeText.innerText = mode === 30 ? "30 SECONDS MODE" : "1 MINUTE MODE";
-            
-            if(isWin) {
-                statusTitle.innerText = "WIN";
-                statusTitle.className = "popup-status-title win-style";
-                decorLine.className = "popup-decor-line win-line";
-                glowBg.style.background = "radial-gradient(circle, #00ffaa 0%, transparent 70%)";
-                box.style.border = "1px solid rgba(0, 255, 170, 0.4)";
-                box.style.boxShadow = "0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0, 255, 170, 0.25)";
-            } else {
-                statusTitle.innerText = "LOSS";
-                statusTitle.className = "popup-status-title loss-style";
-                decorLine.className = "popup-decor-line loss-line";
-                glowBg.style.background = "radial-gradient(circle, #ff4d6d 0%, transparent 70%)";
-                box.style.border = "1px solid rgba(255, 77, 109, 0.4)";
-                box.style.boxShadow = "0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255, 77, 109, 0.25)";
-            }
-
-            overlay.classList.add('show');
-            setTimeout(() => { overlay.classList.remove('show'); }, 2500);
-        }
-
-        function updateDotsByAccuracy(percent) {
-            const container = document.getElementById('confidenceDots');
-            if (!container) return;
-            const dots = container.querySelectorAll('.dot-conf');
-            let val = parseFloat(percent);
-            let activeCount = Math.min(5, Math.max(0, Math.floor((val - 50) / 10))); 
-            dots.forEach((dot, idx) => {
-                if (idx < activeCount) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-        }
-
-        // --- PREDICTION ENGINE ---
-        function computeNewFormulaPrediction(lastFiveNumbers, currentModeState) {
-            if (!lastFiveNumbers || lastFiveNumbers.length < 5) return { prediction: 'SMALL', finalDiff: 4 };
-            
-            let weightSum = 0;
-            let totalWeights = 15;
-            for (let i = 0; i < 5; i++) {
-                let weight = 5 - i; 
-                weightSum += lastFiveNumbers[i] * weight;
-            }
-            let weightedAverage = weightSum / totalWeights;
-            
-            let diff1 = Math.abs(lastFiveNumbers[0] - lastFiveNumbers[1]);
-            let diff2 = Math.abs(lastFiveNumbers[1] - lastFiveNumbers[2]);
-            let trendFactor = (diff1 + diff2) / 2;
-            
-            let coreValue = Math.floor(weightedAverage + trendFactor) % 10;
-            let prediction = (coreValue >= 5) ? 'BIG' : 'SMALL';
-            
-            let lastThreeOutcomes = lastFiveNumbers.slice(0, 3).map(n => n >= 5 ? 'BIG' : 'SMALL');
-            if (lastThreeOutcomes[0] === lastThreeOutcomes[1] && lastThreeOutcomes[1] === lastThreeOutcomes[2]) {
-                prediction = (lastThreeOutcomes[0] === 'BIG') ? 'SMALL' : 'BIG';
-            }
-            
-            if (currentModeState.lossCounter >= 3) {
-                prediction = (prediction === 'BIG') ? 'SMALL' : 'BIG';
-                coreValue = (prediction === 'SMALL') ? 2 : 7;
-                currentModeState.lossCounter = 0; 
-            }
-            return { prediction, finalDiff: coreValue };
-        }
-
-        function checkActualMatchPattern(lastGenerated, actualOutcome) {
-            if(!lastGenerated) return true;
-            return lastGenerated === actualOutcome;
-        }
-
-        // --- UI FUNCTIONS ---
-        function switchTimeMode(seconds) {
-            if(selectedTimeMode === seconds) return;
-            selectedTimeMode = seconds;
-            
-            if(seconds === 30) {
-                document.getElementById('btn30s').classList.add('active');
-                document.getElementById('btn1m').classList.remove('active');
-            } else {
-                document.getElementById('btn1m').classList.add('active');
-                document.getElementById('btn30s').classList.remove('active');
-            }
-            renderHistoryBox();
-            fetchData();
-        }
-
-        function renderHistoryBox() {
-            const histBox = document.getElementById('historyBox');
-            if(!histBox) return;
-            histBox.innerHTML = "";
-            const data = cachedSignals[selectedTimeMode].history;
-            for(let i = data.length - 1; i >= 0; i--) {
-                const item = data[i];
-                const row = document.createElement('div');
-                row.className = 'hist-item';
-                row.innerHTML = `<span>${item.serial}</span> <span style="color:${item.themeColor}; font-weight:bold;">${item.pred.charAt(0)}(${item.n1},${item.n2})</span>`;
-                histBox.appendChild(row);
-            }
-        }
+        let voices = window.speechSynthesis.getVoices();
+        let fVoice = voices.find(v => v.name.includes("Female") || v.name.includes("Zira") || v.name.includes("Google UK English Female") || v.name.includes("Samantha"));
+        if(fVoice) msg.voice = fVoice;
         
-        async function fetchData() {
-            if (!cardActive || currentMode !== "expanded") return;
+        window.speechSynthesis.speak(msg);
+    } catch(e) { console.log("Voice error:", e); }
+}
+
+if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+}
+
+// ==========================================
+// MASSIVE ROSE CONFETTI EFFECT
+// ==========================================
+function triggerRoseRain() {
+    for (let i = 0; i < 120; i++) {
+        setTimeout(() => {
+            const petal = document.createElement("div");
+            petal.className = "rose-petal";
+            petal.innerText = "🌹";
+            petal.style.left = (Math.random() * 110 - 5) + "vw";
+            petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            petal.style.fontSize = (Math.random() * 15 + 10) + "px";
+            petal.style.opacity = Math.random() * 0.5 + 0.5;
             
-            const CURRENT_API = selectedTimeMode === 30 ? API_30S : API_1M;
-            const modeState = cachedSignals[selectedTimeMode];
-            
-            try {
-                const res = await fetch(CURRENT_API + '?t=' + Date.now());
-                const data = await res.json();
-                if (data && data.data && data.data.list) {
-                    const list = data.data.list;
-                    if(list.length < 5) return;
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 4500);
+        }, i * 35);
+    }
+}
 
-                    const lastFiveNumbers = list.slice(0, 5).map(item => parseInt(item.number));
-                    const latestPeriod = list[0].issueNumber;
-                    
-                    const nextPeriodId = (BigInt(latestPeriod) + 1n).toString();
-                    const currentSerial = nextPeriodId.slice(-4); 
-                    
-                    const periodEl = document.getElementById('p_id');
-                    if(periodEl) {
-                        periodEl.innerText = nextPeriodId;
-                    }
+// ==========================================
+// SIGNAL ANALYSIS LOGIC
+// ==========================================
+function analyzeTrendPattern(historyList, nextIssueId) {
+    if (!historyList || historyList.length === 0) {
+        return { bs: "BIG", num: 7, trend: "📊 MOMENTUM TREND", color: "#00f5a0" };
+    }
 
-                    const resultData = computeNewFormulaPrediction(lastFiveNumbers, modeState);
-                    const prediction = resultData.prediction;
-                    const dynamicSeed = resultData.finalDiff;
+    const recentBS = historyList.slice(0, 10).map(item => {
+        const num = parseInt(item.number || item.openNum || item.result, 10);
+        return num >= 5 ? "BIG" : "SMALL";
+    });
 
-                    if(nextPeriodId !== modeState.lastPeriodId) {
-                        const lastOutcomeNum = parseInt(list[0].number);
-                        const lastActualOutcome = (lastOutcomeNum <= 4) ? 'SMALL' : 'BIG';
-                        
-                        if(modeState.history.length > 0) {
-                            const lastPredictedObj = modeState.history[modeState.history.length - 1];
-                            const isWin = checkActualMatchPattern(lastPredictedObj.pred, lastActualOutcome);
-                            if(!isWin) { modeState.lossCounter++; } else { modeState.lossCounter = 0; }
-                            triggerPremiumPopup(selectedTimeMode, isWin);
+    let predictedBS = "BIG";
+    let trendLabel = "📊 MOMENTUM TREND";
+    let trendColor = "#00f5a0";
+
+    if (recentBS.length >= 3 && recentBS[0] === recentBS[1] && recentBS[1] === recentBS[2]) {
+        predictedBS = recentBS[0];
+        trendLabel = `🔥 STREAK (${recentBS[0]})`;
+        trendColor = "#f5b81b";
+    }
+    else if (recentBS.length >= 4 && recentBS[0] !== recentBS[1] && recentBS[1] !== recentBS[2] && recentBS[2] !== recentBS[3]) {
+        predictedBS = (recentBS[0] === "BIG") ? "SMALL" : "BIG";
+        trendLabel = "⚡ ZIGZAG TREND";
+        trendColor = "#00b4d8";
+    }
+    else if (recentBS.length >= 4 && recentBS[0] === recentBS[1] && recentBS[2] === recentBS[3] && recentBS[0] !== recentBS[2]) {
+        predictedBS = (recentBS[0] === "BIG") ? "SMALL" : "BIG";
+        trendLabel = "🔄 PAIR SHIFT";
+        trendColor = "#ff4d6d";
+    }
+    else {
+        let bigScore = 0;
+        let smallScore = 0;
+        const weights = [6, 5, 4, 3, 2, 1];
+        for (let i = 0; i < weights.length && i < recentBS.length; i++) {
+            if (recentBS[i] === "BIG") bigScore += weights[i];
+            else smallScore += weights[i];
+        }
+        predictedBS = (bigScore >= smallScore) ? "BIG" : "SMALL";
+        trendLabel = "📈 WEIGHTED TREND";
+        trendColor = "#00f5a0";
+    }
+
+    let seed = 0;
+    for (let i = 0; i < nextIssueId.length; i++) {
+        seed = ((seed << 5) - seed) + nextIssueId.charCodeAt(i);
+        seed |= 0;
+    }
+    const numEntropy = Math.abs(Math.sin(seed * 9999));
+    const eligibleNums = (predictedBS === "BIG") ? [5, 6, 7, 8, 9] : [0, 1, 2, 3, 4];
+    const luckyNum = eligibleNums[Math.floor(numEntropy * eligibleNums.length)];
+
+    return {
+        bs: predictedBS,
+        num: luckyNum,
+        trend: trendLabel,
+        color: trendColor
+    };
+}
+
+function masterPredict(nextIssueId) {
+    const analysis = analyzeTrendPattern(rawApiHistoryList, nextIssueId);
+    return {
+        side: analysis.bs,
+        number: analysis.num,
+        period: nextIssueId
+    };
+}
+
+// ==========================================
+// PERIOD NUMBER LOGIC & TIMERS
+// ==========================================
+function getTimerSec() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    let remaining = (currentMode === '1M') ? (60 - seconds) : (30 - (seconds % 30));
+    if (remaining === 60) remaining = 0;
+    return remaining;
+}
+
+function getApiUrl() {
+    return currentMode === "30S" 
+        ? "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?pageNo=1&pageSize=50" 
+        : "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json?pageNo=1&pageSize=50";
+}
+
+function showToast(msg, type){
+    const t = document.getElementById("toast"); t.innerText = msg; t.className = type; t.style.display = "block";
+    setTimeout(() => t.style.display = "none", 2500);
+}
+
+async function fetchActualResult(oldPeriod, predictedSide) {
+    const targetUrl = getApiUrl(); const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
+    try {
+        let res = await fetch(targetUrl).catch(()=>null); let data = res ? await res.json() : await (await fetch(proxyUrl)).json();
+        let listData = data?.data?.list || data?.data || data; if (!listData || !Array.isArray(listData)) return false;
+        
+        rawApiHistoryList = listData;
+        let ourIssueLast5 = String(oldPeriod).slice(-5);
+        for(let item of listData) {
+            let apiIssue = String(item.issueNumber || item.issue || item.period);
+            if (apiIssue && apiIssue.slice(-5) === ourIssueLast5) {
+                let num = parseInt(item.number || item.openNum || item.result, 10); if (isNaN(num)) return false;
+                let actualResultSide = num >= 5 ? "BIG" : "SMALL";
+                const isWin = predictedSide === actualResultSide;
+                savedHistory.unshift({ period: ourIssueLast5, predicted: predictedSide, actual: actualResultSide, status: isWin ? "WIN" : "LOSS" });
+                if (savedHistory.length > 20) savedHistory.pop();
+                stats.total++; if(isWin) stats.win++; else stats.loss++;
+                updateChartUI();
+                
+                if (isWin) {
+                    triggerRoseRain();
+                    try {
+                        const wa = document.getElementById("winAudio");
+                        if(wa) {
+                            wa.currentTime = 0;
+                            wa.play().catch(e => console.log("Song play blocked:", e));
                         }
-
-                        modeState.lastPeriodId = nextPeriodId;
-
-                        let confidence = (dynamicSeed === 0 || dynamicSeed === 9 || dynamicSeed === 1 || dynamicSeed === 8) ? 94 : 88;
-                        const accSpan = document.getElementById('accValue');
-                        if(accSpan) accSpan.innerText = confidence + "%";
-                        updateDotsByAccuracy(confidence);
-
-                        let n1, n2;
-                        if (prediction === "BIG") {
-                            n1 = [5,6,7,8,9][Math.floor(Math.random()*5)];
-                            n2 = [5,6,7,8,9][Math.floor(Math.random()*5)];
-                        } else {
-                            n1 = [0,1,2,3,4][Math.floor(Math.random()*5)];
-                            n2 = [0,1,2,3,4][Math.floor(Math.random()*5)];
-                        }
-
-                        let col = [1,3,7,9].includes(n1) ? "GREEN" : ([2,4,6,8].includes(n1) ? "RED" : "VIOLET");
-                        let themeColor = (col === "GREEN") ? "#00ffaa" : (col === "RED" ? "#ff4d6d" : "#ca6eff");
-
-                        const numDiv1 = document.getElementById('numCircle1');
-                        if(numDiv1) {
-                            numDiv1.innerText = n1;
-                            numDiv1.style.borderColor = themeColor;
-                            numDiv1.style.boxShadow = `0 0 10px ${themeColor}`;
-                            numDiv1.style.color = themeColor;
-                        }
-                        const numDiv2 = document.getElementById('numCircle2');
-                        if(numDiv2) {
-                            numDiv2.innerText = n2;
-                            numDiv2.style.borderColor = themeColor;
-                            numDiv2.style.boxShadow = `0 0 10px ${themeColor}`;
-                            numDiv2.style.color = themeColor;
-                        }
-                        const predSpan = document.getElementById('predText');
-                        if(predSpan) {
-                            predSpan.innerText = prediction;
-                            predSpan.style.color = themeColor;
-                        }
-                        const chipSpan = document.getElementById('colorChip');
-                        if(chipSpan){
-                            chipSpan.innerText = col;
-                            chipSpan.style.backgroundColor = themeColor;
-                            chipSpan.style.color = (col === "GREEN" || col === "RED") ? "#000" : "#fff";
-                        }
-                        const trendSpan = document.getElementById('trendSpan');
-                        if(trendSpan) trendSpan.innerText = prediction;
-                        const suggSpan = document.getElementById('suggestSpan');
-                        if(suggSpan) suggSpan.innerText = prediction;
-
-                        const historyArray = modeState.history;
-                        historyArray.push({ serial: currentSerial, pred: prediction, n1, n2, themeColor });
-                        if(historyArray.length > 5) historyArray.shift();
-                        renderHistoryBox();
-                    }
+                    } catch(err){}
                 }
-            } catch (e) {
-                // silently fail
+                
+                return true;
             }
         }
+        return false; 
+    } catch (e) { return false; }
+}
 
-        function updateCountdownTimer() {
-            const now = new Date();
-            const sec = now.getSeconds();
-            const remain = selectedTimeMode - (sec % selectedTimeMode);
-            const timerEl = document.getElementById('timer_display');
-            if(timerEl) {
-                if(selectedTimeMode === 30) {
-                    timerEl.innerText = `00:${remain<10?'0'+remain:remain}`;
-                } else {
-                    timerEl.innerText = `01:${remain<10?'0'+remain:remain}`;
-                    if(remain < 60) {
-                        timerEl.innerText = `00:${remain<10?'0'+remain:remain}`;
+async function fetchInitialHistory() {
+    const targetUrl = getApiUrl(); const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
+    try {
+        let res = await fetch(targetUrl).catch(()=>null); let data = res ? await res.json() : await (await fetch(proxyUrl)).json();
+        let listData = data?.data?.list || data?.data || data;
+        if (Array.isArray(listData) && listData.length > 0) {
+            rawApiHistoryList = listData;
+            savedHistory = [];
+            for(let i=0; i<Math.min(listData.length, 15); i++) {
+                let item = listData[i]; let apiIssue = String(item.issueNumber || item.issue || item.period); let num = parseInt(item.number || item.openNum || item.result, 10);
+                if(!isNaN(num) && apiIssue) savedHistory.push({ period: apiIssue.slice(-5), predicted: "---", actual: num >= 5 ? "BIG" : "SMALL", status: "MARKET" });
+            }
+            updateChartUI();
+            
+            const latestIssue = listData[0].issueNumber || listData[0].issue;
+            const nextIssueId = (BigInt(latestIssue) + 1n).toString();
+            curPeriod = nextIssueId;
+            const pred = masterPredict(nextIssueId);
+            currentPredSide = pred.side;
+            renderResult(pred);
+        }
+    } catch(e) {}
+}
+
+function updateChartUI() {
+    document.getElementById("stTotal").innerText = stats.total; document.getElementById("stWin").innerText = stats.win; document.getElementById("stLoss").innerText = stats.loss;
+    const tbody = document.getElementById("histBody"); tbody.innerHTML = "";
+    savedHistory.forEach(item => {
+        const tr = document.createElement("tr");
+        let cls = item.status === "WIN" ? "td-win" : (item.status === "LOSS" ? "td-loss" : "");
+        if(item.status === "MARKET") tr.style.opacity = "0.5";
+        tr.innerHTML = `<td>${item.period}</td><td>${item.predicted}</td><td>${item.actual}</td><td class="${cls}">${item.status}</td>`;
+        tbody.appendChild(tr);
+    });
+}
+
+function renderResult(e){
+    document.getElementById("periodCapsule").innerText = "ID: " + e.period.slice(-5);
+    const bs=document.getElementById("bsText"); bs.innerText=e.side; bs.className=e.side==="BIG"?"big":"small";
+    const circle = document.getElementById("numberCircle"); circle.innerText = e.number;
+    
+    const numStyle = NUMBER_COLORS[e.number] || { bg: 'rgba(0,0,0,0.5)', text: '#ffffff' };
+    circle.style.background = numStyle.bg;
+    circle.style.color = numStyle.text;
+    circle.style.borderColor = (e.number % 2 === 0) ? "#00ff15" : "#ff1a1a";
+    circle.style.boxShadow = (e.number % 2 === 0) ? "0 0 12px #00ff1588, inset 0 0 8px #00ff1544" : "0 0 12px #ff1a1a88, inset 0 0 8px #ff1a1a44";
+}
+
+async function tick(){
+    const nt = getTimerSec();
+    document.getElementById("timerEl").innerText = "00:" + String(nt).padStart(2, "0");
+
+    if (nt % 3 === 0 || nt === 0) {
+        const targetUrl = getApiUrl(); const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
+        try {
+            let res = await fetch(targetUrl).catch(()=>null); let data = res ? await res.json() : await (await fetch(proxyUrl)).json();
+            let listData = data?.data?.list || data?.data || data;
+            if (Array.isArray(listData) && listData.length > 0) {
+                rawApiHistoryList = listData;
+                const latestIssue = listData[0].issueNumber || listData[0].issue;
+                const nextIssueId = (BigInt(latestIssue) + 1n).toString();
+
+                if (nextIssueId !== curPeriod) {
+                    if (curPeriod !== "" && currentPredSide !== null) {
+                        fetchActualResult(curPeriod, currentPredSide);
                     }
+                    curPeriod = nextIssueId;
+                    const pred = masterPredict(nextIssueId);
+                    currentPredSide = pred.side;
+                    renderResult(pred);
+                    playVoice(pred.side);
                 }
             }
-            if (remain === selectedTimeMode || remain === (selectedTimeMode - 1)) {
-                fetchData();
-            }
-        }
-        
-        function startAISession() {
-            fetchData();
-            if(aiInterval) clearInterval(aiInterval);
-            aiInterval = setInterval(() => {
-                if(cardActive) { updateCountdownTimer(); }
-            }, 1000);
-            setInterval(fetchData, 4000);
-        }
-        
-        // --- VIEW CONTROLS ---
-        function showExpanded() {
-            gateDiv.style.display = 'none';
-            expandedDiv.style.display = 'block';
-            collapsedDiv.style.display = 'none';
-            cardRoot.style.width = '180px';
-            cardRoot.style.background = 'rgba(10, 6, 26, 0.85)';
-            cardRoot.style.border = '1px solid rgba(157, 80, 255, 0.6)';
-            cardRoot.style.boxShadow = '0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(157,80,255,0.25)';
-            currentMode = "expanded";
-            cardActive = true;
-            startAISession();
-        }
-        
-        function showCollapsed() {
-            gateDiv.style.display = 'none';
-            expandedDiv.style.display = 'none';
-            collapsedDiv.style.display = 'block';
-            cardRoot.style.width = 'auto';
-            cardRoot.style.background = 'transparent';
-            cardRoot.style.border = 'none';
-            cardRoot.style.boxShadow = 'none';
-            currentMode = "collapsed";
-        }
-        
-        function removeCardPermanently() {
-            if(aiInterval) { clearInterval(aiInterval); aiInterval = null; }
-            cardActive = false;
-            if(cardRoot) cardRoot.remove();
-        }
-        
-        // --- UNLOCK HANDLER (No Firebase) ---
-        function handleUnlock() {
-            const pin = document.getElementById('accessPin');
-            const inputKey = pin.value.trim();
-            
-            if(!inputKey) {
-                alert("❌ Please enter a code!");
-                return;
-            }
+        } catch(e) {}
+    }
+}
 
-            // Check against hardcoded password
-            if (inputKey === VALID_ACCESS_CODE) {
-                showExpanded();
-            } else {
-                alert("⛔ ACCESS DENIED • Invalid Key");
-                pin.style.borderColor = "#ff4466";
-                setTimeout(() => { if(pin) pin.style.borderColor = "rgba(157, 80, 255, 0.7)"; }, 700);
-            }
-        }
-        
-        // --- BIND EVENTS ---
-        function bindEvents() {
-            const unlockBtn = document.getElementById('unlockBtnMain');
-            if(unlockBtn) unlockBtn.addEventListener('click', handleUnlock);
-            
-            const pinInput = document.getElementById('accessPin');
-            if(pinInput) pinInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleUnlock(); });
-            
-            const foldBtn = document.getElementById('foldHideBtn');
-            if(foldBtn) foldBtn.addEventListener('click', (e) => { e.stopPropagation(); showCollapsed(); });
-            
-            const exitPerm = document.getElementById('exitPermBtn');
-            if(exitPerm) exitPerm.addEventListener('click', (e) => { e.stopPropagation(); removeCardPermanently(); });
-            
-            const expandCircle = document.getElementById('expandFromIconCircle');
-            if(expandCircle) {
-                expandCircle.addEventListener('click', (e) => { 
-                    e.stopPropagation(); 
-                    if(!isDraggingNow) showExpanded(); 
-                });
-            }
-        }
-        
-        // --- DRAG SYSTEM ---
-        let dragActive = false;
-        let isDraggingNow = false; 
-        let dragStartX = 0, dragStartY = 0, startLeft = 0, startTop = 0;
-        
-        function onDragStart(e) {
-            const target = e.target;
-            if (target.tagName === 'INPUT' || target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('input') || target.closest('a')) { return; }
-            dragActive = true;
-            isDraggingNow = false;
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            const leftVal = parseInt(cardRoot.style.left);
-            const topVal = parseInt(cardRoot.style.top);
-            startLeft = isNaN(leftVal) ? 16 : leftVal;
-            startTop = isNaN(topVal) ? 20 : topVal;
-            dragStartX = clientX - startLeft;
-            dragStartY = clientY - startTop;
-            cardRoot.style.transition = 'none';
-        }
-        
-        function onDragMove(e) {
-            if(!dragActive) return;
-            isDraggingNow = true; 
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            let newLeft = clientX - dragStartX;
-            let newTop = clientY - dragStartY;
-            const maxX = window.innerWidth - cardRoot.offsetWidth - 5;
-            const maxY = window.innerHeight - cardRoot.offsetHeight - 5;
-            newLeft = Math.min(Math.max(5, newLeft), maxX);
-            newTop = Math.min(Math.max(5, newTop), maxY);
-            cardRoot.style.left = newLeft + 'px';
-            cardRoot.style.top = newTop + 'px';
-        }
-        
-        function onDragEnd() {
-            dragActive = false;
-            cardRoot.style.transition = '';
-            setTimeout(() => { isDraggingNow = false; }, 50);
-        }
-        
-        // --- INIT ---
-        cardRoot.addEventListener('touchstart', onDragStart, { passive: true });
-        cardRoot.addEventListener('touchmove', onDragMove, { passive: true });
-        cardRoot.addEventListener('touchend', onDragEnd);
-        cardRoot.addEventListener('mousedown', onDragStart);
-        window.addEventListener('mousemove', onDragMove);
-        window.addEventListener('mouseup', onDragEnd);
-        
-        cardRoot.style.position = 'fixed';
-        cardRoot.style.left = '16px';
-        cardRoot.style.top = '20px';
-        
-        gateDiv.style.display = 'block';
-        expandedDiv.style.display = 'none';
-        collapsedDiv.style.display = 'none';
-        cardActive = false;
-        currentMode = "gate";
-        
-        bindEvents();
-        
-        // Expose switchTimeMode globally for inline onclick
-        window.switchTimeMode = switchTimeMode;
-    })();
+// ==========================================
+// UI INTERACTIONS
+// ==========================================
+function toggleMenu(e) { 
+    if(e) e.stopPropagation(); 
+    const m = document.getElementById("dropdownMenu"); 
+    m.style.display = m.style.display === "flex" ? "none" : "flex"; 
+}
+
+document.addEventListener("click", () => document.getElementById("dropdownMenu").style.display = "none");
+
+function zoomIn() { if (currentZoom < 1.4) { currentZoom += 0.1; document.getElementById("boxWrap").style.setProperty('--panel-zoom', currentZoom); } }
+function zoomOut() { if (currentZoom > 0.6) { currentZoom -= 0.1; document.getElementById("boxWrap").style.setProperty('--panel-zoom', currentZoom); } }
+
+function toggleMinimize() {
+    isMinimized = !isMinimized; 
+    const boxInner = document.getElementById("boxInner"); 
+    const minBtn = document.getElementById("minimizeBtn"); 
+    const predUI = document.getElementById("predictionUI");
+    const menuBtn = document.getElementById("menuBtn");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    dropdown.style.display = "none";
+
+    if (isMinimized) {
+        document.getElementById("loginForm").style.display = "none"; 
+        predUI.style.display = "none"; 
+        document.getElementById("topDivider").style.display = "none";
+        boxInner.style.minHeight = "auto"; 
+        boxInner.style.height = "38px";
+        minBtn.innerText = "MAXIMIZE"; 
+        minBtn.style.background = "#09ff77"; 
+        minBtn.style.color = "#000";
+
+        menuBtn.innerText = "➕";
+        menuBtn.style.fontSize = "14px";
+        menuBtn.style.marginTop = "3px";
+        menuBtn.onclick = function(e) { e.stopPropagation(); toggleMinimize(); };
+    } else {
+        boxInner.style.height = "auto"; 
+        boxInner.style.minHeight = "280px"; 
+        document.getElementById("topDivider").style.display = "block";
+        if (predUI.dataset.active === "true") predUI.style.display = "flex"; 
+        else document.getElementById("loginForm").style.display = "flex";
+        minBtn.innerText = "MINIMIZE"; 
+        minBtn.style.background = "rgba(255, 59, 59, 0.8)"; 
+        minBtn.style.color = "#fff";
+
+        menuBtn.innerText = "⋮";
+        menuBtn.style.fontSize = "20px";
+        menuBtn.style.marginTop = "0px";
+        menuBtn.onclick = function(e) { toggleMenu(e); };
+    }
+}
+
+function setMode(mode) {
+    currentMode = mode; document.getElementById("m30s").className = mode === "30S" ? "menu-item active" : "menu-item"; document.getElementById("m1m").className = mode === "1M" ? "menu-item active" : "menu-item"; document.getElementById("headerMode").innerText = mode;
+    savedHistory = []; stats = { total: 0, win: 0, loss: 0 }; updateChartUI();
+    curPeriod = "";
+    fetchInitialHistory(); showToast(mode + " Selected.", "info");
+}
+
+// ==========================================
+// SIMPLE PASSWORD LOGIN (NO FIREBASE)
+// ==========================================
+function handleLogin() {
+    unlockVoiceEngine(); 
+    try { document.getElementById("winAudio").load(); } catch(e){}
+
+    const key = document.getElementById("passwordInput").value.trim();
+    if (!key) { 
+        showToast("Please enter a key", "error"); 
+        return; 
+    }
+
+    // Check if the password matches "RAJVIP"
+    if (key === "RAJPANDA") {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("predictionUI").style.display = "flex"; 
+        document.getElementById("predictionUI").dataset.active = "true";
+        fetchInitialHistory();
+        setInterval(tick, 1000); 
+        showToast("Login Success!", "info");
+        setTimeout(() => { playVoice("Login Successful."); }, 500); 
+    } else {
+        showToast("Invalid Key!", "error");
+    }
+}
+
+function openChart() { document.getElementById("chartModal").style.display = "flex"; }
+function closeChart(e, isBtn) { if(isBtn || e.target.id === 'chartModal') document.getElementById("chartModal").style.display = "none"; }
+function openStepModal() { document.getElementById("stepModal").style.display = "flex"; document.getElementById("stepResult").innerHTML = "Calculated steps will appear here."; }
+function closeStepModal(e) { if(e.target.id === 'stepModal') document.getElementById("stepModal").style.display = "none"; }
+
+function generateSteps() {
+    const cap = parseFloat(document.getElementById("capitalInput").value); const steps = parseInt(document.getElementById("stepsInput").value); const resDiv = document.getElementById("stepResult");
+    if (isNaN(cap) || isNaN(steps) || cap <= 0 || steps <= 0) { resDiv.innerHTML = "<span style='color:red;'>Valid numbers required!</span>"; return; }
+    if (steps > 15) { resDiv.innerHTML = "<span style='color:red;'>Max 15 steps!</span>"; return; }
+    const baseAmt = cap / (Math.pow(2, steps) - 1); let html = "<div class='step-list'>";
+    for(let i = 1; i <= steps; i++) { html += `<div class='step-item'><span>Step ${i}</span><span>৳${(baseAmt * Math.pow(2, i - 1)).toFixed(2)}</span></div>`; }
+    resDiv.innerHTML = html + "</div>";
+}
+
+// Start color animation
+animateColors();
+
+// ==========================================
+// DRAG SYSTEM
+// ==========================================
+let isDragging = false, startX, startY;
+const box = document.getElementById("predictionBox");
+
+function isInteractive(e){ 
+    let tag = e.target.tagName; 
+    return tag === 'BUTTON' || tag === 'INPUT' || e.target.closest('#dropdownMenu') || e.target.closest('a'); 
+}
+
+function initDrag(e) {
+    if(isInteractive(e)) return;
+    isDragging = true;
+    
+    const rect = box.getBoundingClientRect();
+    if(!box.style.left) {
+        box.style.left = rect.left + "px";
+        box.style.top = rect.top + "px";
+        box.style.bottom = "auto";
+        box.style.right = "auto";
+    }
+
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    startX = clientX - box.getBoundingClientRect().left;
+    startY = clientY - box.getBoundingClientRect().top;
+}
+
+function onDrag(e) {
+    if (!isDragging) return;
+    
+    if(e.cancelable) {
+        e.preventDefault();
+    }
+    
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    box.style.left = (clientX - startX) + "px";
+    box.style.top = (clientY - startY) + "px";
+}
+
+function stopDrag() {
+    isDragging = false;
+}
+
+box.addEventListener("mousedown", initDrag);
+document.addEventListener("mousemove", onDrag);
+document.addEventListener("mouseup", stopDrag);
+
+box.addEventListener("touchstart", initDrag, { passive: false });
+document.addEventListener("touchmove", onDrag, { passive: false });
+document.addEventListener("touchend", stopDrag);
+
 </script>
 
-
-<script async="" src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="bbb056b7-361d-4cd5-9049-ea2a8a8cd38f" data-app-host="app.netlify.com"></script>
+<script async="" src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="e1fc5fbf-ff9b-4021-9154-f13e7016e96e" data-app-host="app.netlify.com" data-account-tier="free"></script>
 <iframe id="nl-badge-frame" title="Powered by Netlify" srcdoc="&lt;!doctype html&gt;&lt;html class=&quot;nl-narrow&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;color-scheme&quot; content=&quot;dark&quot;&gt;&lt;style&gt;
     :root{--nl-vw:423px;--nl-vh:732px}
     *{box-sizing:border-box}
@@ -902,14 +889,14 @@
             &lt;input type=&quot;hidden&quot; name=&quot;utm_campaign&quot; value=&quot;loops&quot;&gt;
             &lt;input type=&quot;hidden&quot; name=&quot;utm_medium&quot; value=&quot;owned&quot;&gt;
             &lt;input type=&quot;hidden&quot; name=&quot;utm_content&quot; value=&quot;prompt&quot;&gt;
-            &lt;input type=&quot;hidden&quot; name=&quot;utm_id&quot; value=&quot;bbb056b7-361d-4cd5-9049-ea2a8a8cd38f&quot;&gt;
+            &lt;input type=&quot;hidden&quot; name=&quot;utm_id&quot; value=&quot;e1fc5fbf-ff9b-4021-9154-f13e7016e96e&quot;&gt;
             
           &lt;/form&gt;
           &lt;div class=&quot;nl-or&quot;&gt;&lt;span&gt;or&lt;/span&gt;&lt;/div&gt;
-          &lt;a class=&quot;nl-drop&quot; href=&quot;https://app.netlify.com/drop?utm_source=netlify_badge&amp;utm_campaign=loops&amp;utm_medium=owned&amp;utm_content=drop&amp;utm_id=bbb056b7-361d-4cd5-9049-ea2a8a8cd38f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+          &lt;a class=&quot;nl-drop&quot; href=&quot;https://app.netlify.com/drop?utm_source=netlify_badge&amp;utm_campaign=loops&amp;utm_medium=owned&amp;utm_content=drop&amp;utm_id=e1fc5fbf-ff9b-4021-9154-f13e7016e96e&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
             &lt;span&gt;Drop a site you already have&lt;/span&gt;&lt;span class=&quot;nl-arrow&quot; aria-hidden=&quot;true&quot;&gt;&amp;rarr;&lt;/span&gt;
           &lt;/a&gt;
-          &lt;button type=&quot;button&quot; class=&quot;nl-hide&quot; id=&quot;nl-hide&quot;&gt;Hide this badge&lt;/button&gt;
+          
         &lt;/section&gt;
         &lt;button type=&quot;button&quot; class=&quot;nl-badge&quot; id=&quot;nl-badge&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;nl-card&quot;
                 aria-label=&quot;Powered by Netlify — build your own site&quot;&gt;
@@ -976,8 +963,8 @@
         document.addEventListener('keydown',function(e){
           if(e.key==='Escape'&amp;&amp;card.classList.contains('open')){setOpen(false);badge.focus();}
         });
-        document.getElementById('nl-hide').addEventListener('click',function(){
-          parent.postMessage({nlHud:'state',value:'hidden'},'*');
+        card.addEventListener('click',function(e){
+          if(e.target.closest('#nl-hide'))parent.postMessage({nlHud:'state',value:'hidden'},'*');
         });
       &lt;/script&gt;
-    &lt;/body&gt;&lt;/html&gt;" style="position: fixed; bottom: 0px; right: 0px; border: 0px; margin: 0px; padding: 0px; background: transparent; color-scheme: dark; z-index: 2147483645; width: 175px; height: 63px; clip-path: path(&quot;M 3 3 H 162 V 50 H 3 Z&quot;);" data-nl-ready="1"></iframe></body></html>import
+    &lt;/body&gt;&lt;/html&gt;" style="position: fixed; bottom: 0px; right: 0px; border: 0px; margin: 0px; padding: 0px; background: transparent; color-scheme: dark; z-index: 2147483645; width: 175px; height: 63px; clip-path: path(&quot;M 3 3 H 162 V 50 H 3 Z&quot;);" data-nl-ready="1"></iframe></body></html>
